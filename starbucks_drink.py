@@ -59,10 +59,13 @@ for item in items:
         eng_name = detail.find("h4").find("span").text
         explanation = detail.find(class_="t1").text
 
+        img_url = item.find_all(class_="m_view_img")[0]["src"]
+
         print(f"{rank}번째 음료")
         print(ko_name)
         print(eng_name)
         print(explanation)
+        print(img_url)
 
         info_all = item.find(class_="product_info_content").find_all("li")
         dict_info = {}
@@ -81,6 +84,7 @@ for item in items:
         data.append({
             "Korean Name": ko_name,
             "English Name": eng_name,
+            "Image Url": img_url,
             "Explanation": explanation,
             "Category": items_name,
             "Factors": allergy_factor,
@@ -88,7 +92,7 @@ for item in items:
         })
 
 df = pd.DataFrame(data)
-df.to_csv("starbucks.csv")
+df.to_csv("starbucks_drink.csv")
 print(df.columns)
 print(df)
 
