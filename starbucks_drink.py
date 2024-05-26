@@ -88,6 +88,7 @@ for item in items:
         })
 
 df = pd.DataFrame(data)
+df.to_csv("starbucks.csv")
 print(df.columns)
 print(df)
 
