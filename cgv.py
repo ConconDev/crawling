@@ -33,7 +33,7 @@ def process_items(items, cate):
         info = driver.find_element(By.CLASS_NAME, "store_deatail_add_info")
         info_dict = {}
         
-        detail = driver.find_element(By.CLASS_NAME,"store_detail_product_introduce")
+        detail = driver.find_element(By.CLASS_NAME,"store_detail_product_introduce").text
         
         for dt, dd in zip(info.find_elements(By.TAG_NAME, "dt"), info.find_elements(By.TAG_NAME, "dd")):
             info_dict[dt.text] = dd.text
