@@ -28,6 +28,10 @@ def process_items(items, cate):
         items[i].click()
         time.sleep(1)
         
+        # 이미지 src 추출
+        image_tag = driver.find_element(By.CLASS_NAME, "swiper-slide").find_element(By.TAG_NAME, "img")
+        image_src = image_tag.get_attribute('src')  # img 태그의 src 속성 추출
+        
         price = driver.find_element(By.CLASS_NAME, "store_deatail_sale_price").text
         
         info = driver.find_element(By.CLASS_NAME, "store_deatail_add_info")
@@ -45,7 +49,8 @@ def process_items(items, cate):
             "Composition": info_dict.get("상품구성"),
             "Expiration": info_dict.get("유효기간"),
             "Origin": info_dict.get("원산지"),
-            "Detail":detail
+            "Detail": detail,
+            "Image": image_src  # 이미지 src 추가
         }
         data.append(item_data)
 
